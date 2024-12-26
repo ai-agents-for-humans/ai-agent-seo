@@ -47,11 +47,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu functionality
     const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
+    const navBreadcrumb = document.querySelector('.nav-breadcrumb');
     
-    hamburger.addEventListener('click', () => {
+    hamburger.addEventListener('click', function() {
+        navBreadcrumb.classList.toggle('active');
         hamburger.classList.toggle('active');
-        navLinks.classList.toggle('active');
     });
 
     // Close mobile menu when clicking a link

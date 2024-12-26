@@ -30,9 +30,10 @@ body {
 }
 
 .container {
+    width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     padding: 0 20px;
+    margin: 0 auto;
 }
 
 /* Navigation */
@@ -40,7 +41,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1rem 0;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -198,7 +199,7 @@ body {
 
 /* Hero Section */
 .hero {
-    padding: 0px 0 100px;
+    padding: 60px 0;
     background: var(--primary);
     color: white;
     text-align: center;
@@ -219,7 +220,7 @@ body {
 }
 
 .hero h1 {
-    font-size: 4rem;
+    font-size: clamp(2rem, 5vw, 3.5rem);
     line-height: 1.2;
     margin-bottom: 2rem;
     background: linear-gradient(to right, var(--text), var(--accent));
@@ -231,7 +232,7 @@ body {
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 3vw, 1.25rem);
     margin-bottom: 2rem;
     color: var(--text);
 }
@@ -741,7 +742,7 @@ body {
 
 /* Solution Section Styles */
 .solution-section {
-    padding: 120px 0;
+    padding: 40px 0;
     background: var(--primary);
     position: relative;
     overflow: hidden;
@@ -1681,7 +1682,7 @@ body {
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-    padding: 1rem 0;
+    padding: 15px 0;
     position: fixed;
     top: 0;
     left: 0;
@@ -1772,5 +1773,101 @@ body {
 
     body {
         padding-bottom: 70px;
+    }
+}
+
+/* Base responsive settings */
+* {
+    box-sizing: border-box;
+}
+
+/* Container responsiveness */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+}
+
+/* Navbar responsiveness */
+.navbar {
+    padding: 15px 0;
+}
+
+.nav-breadcrumb {
+    display: flex;
+    gap: 20px;
+}
+
+/* Show hamburger menu on mobile */
+@media (max-width: 768px) {
+    .nav-breadcrumb {
+        display: none; /* Hide regular nav on mobile */
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .nav-breadcrumb.active {
+        display: flex;
+    }
+
+    .hamburger {
+        display: block;
+    }
+}
+
+/* Hero section responsiveness */
+.hero {
+    padding: 60px 0;
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    line-height: 1.2;
+}
+
+.hero p {
+    font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+/* Solution section responsiveness */
+.solution-section {
+    padding: 40px 0;
+}
+
+/* General responsive text */
+h1, h2 {
+    word-wrap: break-word;
+}
+
+/* Responsive buttons */
+.btn {
+    padding: 12px 24px;
+    width: auto;
+    max-width: 100%;
+}
+
+/* Responsive images */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Additional mobile adjustments */
+@media (max-width: 480px) {
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .solution-header {
+        text-align: center;
     }
 }

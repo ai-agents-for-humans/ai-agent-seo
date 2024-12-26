@@ -27,6 +27,9 @@ body {
     cursor: default;
     margin-right: 0;
     padding-top: 90px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .container {
@@ -1975,4 +1978,41 @@ img {
     to {
         opacity: 1;
     }
+}
+
+/* Footer Styles */
+.footer {
+    padding: 20px 0;
+    text-align: center;
+    background-color: #fff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 40px;
+}
+
+.footer p {
+    margin: 0;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.footer .heart {
+    display: inline-block;
+    animation: heartbeat 1.5s ease infinite;
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Ensure footer stays at bottom for short pages */
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
 }

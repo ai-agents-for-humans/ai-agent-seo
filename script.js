@@ -47,19 +47,32 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu functionality
     const hamburger = document.querySelector('.hamburger');
-    const navBreadcrumb = document.querySelector('.nav-breadcrumb');
+    const mobileMenu = document.querySelector('.mobile-menu');
+    const overlay = document.querySelector('.mobile-menu-overlay');
     
     hamburger.addEventListener('click', function() {
-        navBreadcrumb.classList.toggle('active');
-        hamburger.classList.toggle('active');
+        this.classList.toggle('active');
+        mobileMenu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
     });
 
-    // Close mobile menu when clicking a link
-    document.querySelectorAll('.nav-links a').forEach(link => {
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(link => {
         link.addEventListener('click', () => {
             hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
         });
+    });
+
+    // Close menu when clicking overlay
+    overlay.addEventListener('click', () => {
+        hamburger.classList.remove('active');
+        mobileMenu.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = '';
     });
 
     // Timeline animation

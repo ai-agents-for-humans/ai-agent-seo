@@ -163,4 +163,50 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('active');
         });
     });
+
+    // Track navigation clicks
+    document.querySelectorAll('.nav-desktop a, .mobile-menu a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            gtag('event', 'navigation_click', {
+                'link_text': link.textContent,
+                'link_url': link.getAttribute('href')
+            });
+        });
+    });
+
+    // Track CTA button clicks
+    document.querySelectorAll('.cta-button').forEach(button => {
+        button.addEventListener('click', () => {
+            gtag('event', 'contact_button_click', {
+                'button_text': button.textContent.trim(),
+                'location': 'contact_section'
+            });
+        });
+    });
+
+    // Track scroll depth
+    let scrollDepthTriggered = new Set();
+    window.addEventListener('scroll', () => {
+        const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+        
+        [25, 50, 75, 100].forEach(threshold => {
+            if (scrollPercent >= threshold && !scrollDepthTriggered.has(threshold)) {
+                scrollDepthTriggered.add(threshold);
+                gtag('event', 'scroll_depth', {
+                    'depth_percentage': threshold
+                });
+            }
+        });
+    });
+
+    // Track time spent on page
+    let timeSpent = 0;
+    setInterval(() => {
+        timeSpent += 30;
+        if (timeSpent === 60 || timeSpent === 180) { // Track at 1 min and 3 mins
+            gtag('event', 'time_spent', {
+                'duration_seconds': timeSpent
+            });
+        }
+    }, 30000);
 }); 

@@ -1251,24 +1251,26 @@ body {
 }
 
 .contact-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: 60px;
     max-width: 1200px;
     margin: 0 auto;
+    width: 100%;
 }
 
 .contact-info {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
     gap: 30px;
+    width: 100%;
 }
 
 .info-card {
+    flex: 1;
     background: var(--secondary);
     padding: 30px;
     border-radius: 16px;
     transition: transform 0.3s ease;
+    max-width: calc(33.33% - 20px);
 }
 
 .info-card:hover {
